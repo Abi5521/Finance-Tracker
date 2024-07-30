@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <h1>Add a new transaction:</h1>
+            <div class="container-con">
+                <div id="content">
+                    <div id="con1">
+                        Type: <select name="" id="incometype">
+                            <option value="">choose one...</option>
+                            <option value="income">income</option>
+                            <option value="expense">expense</option>
+                        </select>
+                    </div>
+                    <div id="con2">
+                        Name: <input type="text" id="name"><br><br>
+                        Amount: <input type="text" id="amount">
+                    </div>
+                </div>
+            </div>
+            <button id="btn" type="button">Add to transactions</button>
+            <div id="color"></div>
+            <div class="table">
+                <table id="transaction-table">
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Options</th>
+                    </tr>
+                    <!-- <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr> -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        document.getElementById('btn').onclick = function(){
+            let incometype = document.getElementById('incometype').value;
+            let name = document.getElementById('name').value;
+            let amount = document.getElementById('amount').value;
+
+            if(incometype == '' || name == '' || amount == ''){
+                alert("Please enter all the details");
+                return;
+            }
+
+            let table = document.getElementById('transaction-table');
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+
+            cell1.innerHTML = incometype.charAt(0).toUpperCase() + incometype.slice(1);
+            cell2.innerHTML = name;
+            cell3.innerHTML = '$' + amount;
+            cell4.innerHTML = 'Delete';
+
+            // Clear input fields
+            document.getElementById('incometype').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('amount').value = '';
+        }
+    </script>
+</body>
+</html>
